@@ -1,19 +1,4 @@
 # todo-app
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Project 
+I learnt a lot building this project, from working with props, trying to create and modify components. I also learnt more about Vue directives and data binding. VueJS is fun😊

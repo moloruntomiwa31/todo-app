@@ -14,5 +14,5 @@ export default {
 </script>
 
 <style>
-  * {font-family: Syne; transition: all 0.5s ease-in-out;}
+  * {font-family: Syne;}
 </style>

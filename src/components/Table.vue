@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="table-responsive mt-3" v-show="taskAdded">
+    <transition name="fade">
+      <p v-if="error" class="error">You need to add a task.</p>
+    </transition>
+    <div class="table-responsive mt-3" v-if="taskAdded">
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -17,7 +20,11 @@
             <td :class="{ stroke: task.status === 'finished' }">
               {{ task.name }}
             </td>
-            <td class="text-capitalize status" @click="changeStatus(index)" style="background-color: #146C94; color: white; ">
+            <td
+              class="text-capitalize status"
+              @click="changeStatus(index)"
+              style="background-color: #146c94; color: white"
+            >
               {{ task.status }}
             </td>
             <!-- <td>
@@ -39,28 +46,38 @@
 
 <script>
 export default {
-    props: ['task', 'tasks', 'taskAdded', 'editedTask'],
-    data() {
-        return {
-            statusArray: ["to-do", "in progress", "finished"]
-        }
+  props: ["task", "tasks", "taskAdded", "editedTask", "error"],
+  data() {
+    return {
+      statusArray: ["to-do", "in progress", "finished"],
+    };
+  },
+  methods: {
+    deleteTask(index) {
+      this.tasks.splice(index, 1);
     },
-    methods: {
-        deleteTask(index) {
-            this.tasks.splice(index, 1)
-        },
-        editTask(index) {
-            this.task = this.tasks[index].name
-            this.editedTask = index
-        },
-        changeStatus(index) {
-            let newIndex = this.statusArray.indexOf(this.tasks[index].status)
-            if (++newIndex > 2) newIndex = 0
-            this.tasks[index].status = this.statusArray[newIndex]
-        }
-    }
-}
+    editTask(index) {
+      this.task = this.tasks[index].name;
+      this.editedTask = index;
+    },
+    changeStatus(index) {
+      let newIndex = this.statusArray.indexOf(this.tasks[index].status);
+      if (++newIndex > 2) newIndex = 0;
+      this.tasks[index].status = this.statusArray[newIndex];
+    },
+  },
+};
 </script>
 
 <style>
+  .error {
+    color: red;
+    font-style: italic;
+  }
+  .fade-enter-active, .fade-leave-active {
+      transition: opacity .9s;
+  }
+  .fade-enter, .fade-leave-to {
+      opacity: 0;
+  }
 </style>
