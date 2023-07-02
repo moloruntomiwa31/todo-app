@@ -3,7 +3,7 @@
     <h1 class="text-center mt-5 fw-bolder text-uppercase" style="color: white;">My Vue Todo App</h1>
 
     <div class="d-flex mt-3">
-      <input style="background-color: #146C94; color: white; border: none;" type="text" placeholder="Enter task here..." class="form-control" v-model="task" @keyup.enter="submitTask">
+      <input ref="el" style="background-color: #146C94; color: white; border: none;" type="text" placeholder="Enter task here..." class="form-control" v-model="task" @keyup.enter="submitTask">
       <button class="btn btn-primary rounded ms-3" @click="submitTask">Submit</button>
     </div>
     <Table :task="task" :tasks="tasks" :taskAdded="taskAdded" :editedTask="editedTask"  :error="error" />
@@ -56,6 +56,9 @@ export default {
     if (storedArray !== null) {
       this.tasks = JSON.parse(storedArray);
     }
+  },
+  mounted() {
+    this.$refs.el.focus()
   }
 
 }
