@@ -10,7 +10,7 @@
             <th>S/N</th>
             <th>Task</th>
             <th>Status</th>
-            <!-- <th>Edit</th> -->
+            <th>Date</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -27,11 +27,11 @@
             >
               {{ task.status }}
             </td>
-            <!-- <td>
-              <div class="text-center" @click="editTask(index)">
-                <span class="fa fa-pen icon"></span>
+            <td>
+              <div class="text-center">
+                {{ date }}
               </div>
-            </td> -->
+            </td>
             <td>
               <div class="text-center" @click="deleteTask(index)">
                 <span class="fa fa-trash icon"></span>
@@ -50,6 +50,7 @@ export default {
   data() {
     return {
       statusArray: ["to-do", "in progress", "finished"],
+      date: new Date().toLocaleString()
     };
   },
   methods: {
