@@ -53,7 +53,7 @@ export default {
   created() {
     const storedArray = localStorage.getItem('saveTodo');
     if (storedArray !== null) {
-      this.tasks = JSON.parse(storedArr;
+      this.tasks = JSON.parse(storedArray);
     }
   },
   mounted() {
