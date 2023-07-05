@@ -6,7 +6,7 @@
       <input ref="el" style="background-color: #146C94; color: white; border: none;" type="text" placeholder="Enter task here..." class="form-control" v-model="task" @keyup.enter="submitTask">
       <button class="btn btn-primary rounded ms-3" @click="submitTask">Submit</button>
     </div>
-    <Table :task="task" :tasks="tasks" :taskAdded="taskAdded" :editedTask="editedTask"  :error="error" />
+    <Table :task="task" :tasks="tasks" :editedTask="editedTask"  :error="error" />
   </div>
 </template>
 
@@ -20,8 +20,7 @@ export default {
       task: "",
       error: false,
       tasks: [],
-      taskAdded: tasks.length,
-      editedTask: null,
+      editedTask: null
     }
   },
   methods: {
