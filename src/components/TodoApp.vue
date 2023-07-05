@@ -20,7 +20,7 @@ export default {
       task: "",
       error: false,
       tasks: [],
-      taskAdded: false,
+      taskAdded: tasks.length,
       editedTask: null,
     }
   },
@@ -35,7 +35,7 @@ export default {
             name: this.task,
             status: "to-do"
             })
-            this.taskAdded = true
+            
         }else {
             this.tasks[this.editedTask].name = this.task
             this.editedTask = null
@@ -54,7 +54,7 @@ export default {
   created() {
     const storedArray = localStorage.getItem('saveTodo');
     if (storedArray !== null) {
-      this.tasks = JSON.parse(storedArray);
+      this.tasks = JSON.parse(storedArr;
     }
   },
   mounted() {
