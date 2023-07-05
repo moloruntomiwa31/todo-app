@@ -3,7 +3,7 @@
     <transition name="fade">
       <p v-if="error" class="error">You need to add a task.</p>
     </transition>
-    <div class="table-responsive mt-3" v-if="taskAdded">
+    <div class="table-responsive mt-3" v-if="tasks.length === 0 ? false: true">
       <table class="table table-bordered">
         <thead>
           <tr>
@@ -46,7 +46,7 @@
 
 <script>
 export default {
-  props: ["task", "tasks", "taskAdded", "editedTask", "error"],
+  props: ["task", "tasks", "editedTask", "error"],
   data() {
     return {
       statusArray: ["to-do", "in progress", "finished"],
